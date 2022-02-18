@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  postgres-customer:
+    container_name: postgres-user
+    image: postgres
+    environment:
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: user
+      PGDATA: /data/postgres
+    volumes:
+      - postgres-user:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+  spring:
+    driver: bridge
+
+volumes:
+  postgres-user:
