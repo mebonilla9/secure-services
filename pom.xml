@@ -10,6 +10,9 @@
 
   <modules>
     <module>user</module>
+    <module>authority</module>
+    <module>api-gateway</module>
+    <module>clients</module>
   </modules>
 
   <name>secureservices</name>

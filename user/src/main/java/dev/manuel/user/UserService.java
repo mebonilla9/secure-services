@@ -1,5 +1,6 @@
 package dev.manuel.user;
 
+import dev.manuel.clients.user.UserRegistrationRequest;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,7 @@ public record UserService(UserRepository userRepository) {
   public void registerUser(UserRegistrationRequest request) {
     User user = User.builder()
       .fullName(request.fullName())
-      .email(request.email())
-      .userName(request.userName())
-      .password(DigestUtils.sha384Hex(request.password()))
+
       .build();
     // TODO Check if email valid
     // TODO Check if email not taken

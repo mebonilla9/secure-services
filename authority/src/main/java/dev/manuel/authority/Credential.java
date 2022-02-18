@@ -1,4 +1,4 @@
-package dev.manuel.user;
+package dev.manuel.authority;
 
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -9,33 +9,34 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity(name = "`user`")
-public class User {
+@RequiredArgsConstructor
+@Entity
+public class Credential {
 
   @Id
   @SequenceGenerator(
-    name = "user_id_sequence",
-    sequenceName = "user_id_sequence"
+    name = "credential_id_sequence",
+    sequenceName = "credential_id_sequence"
   )
   @GeneratedValue(
     strategy = GenerationType.SEQUENCE,
-    generator = "user_id_sequence"
+    generator = "credential_id_sequence"
   )
   private Integer id;
-  private String fullName;
-  private String phone;
-  private String document;
-  private String address;
+
+  @Column(unique = true)
+  private String email;
+  @Column(unique = true)
+  private String userName;
+  private String password;
+  private Integer userId;
 
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-    User user = (User) o;
-    return id != null && Objects.equals(id, user.id);
+    Credential that = (Credential) o;
+    return id != null && Objects.equals(id, that.id);
   }
 
   @Override

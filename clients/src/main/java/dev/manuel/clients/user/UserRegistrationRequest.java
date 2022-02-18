@@ -1,4 +1,4 @@
-package dev.manuel.user;
+package dev.manuel.clients.user;
 
 public record UserRegistrationRequest(
   String fullName,
