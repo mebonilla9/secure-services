@@ -1,5 +1,6 @@
 package dev.manuel.user;
 
+import dev.manuel.clients.authority.CredentialRequest;
 import dev.manuel.clients.user.UserRegistrationRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
