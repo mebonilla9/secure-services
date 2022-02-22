@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  postgres-customer:
+  postgres-user:
     container_name: postgres-user
     image: postgres
     environment:
@@ -15,6 +15,21 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+  postgres-authority:
+    container_name: postgres-authority
+    image: postgres
+    environment:
+      POSTGRES_USER: dbauthority
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: authority
+      PGDATA: /data/postgres
+    volumes:
+      - postgres-authority:/data/postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
 
 networks:
   postgres:
@@ -24,3 +39,4 @@ networks:
 
 volumes:
   postgres-user:
+  postgres-authority:

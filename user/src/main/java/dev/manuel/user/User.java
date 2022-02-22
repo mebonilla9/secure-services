@@ -12,7 +12,8 @@ import java.util.Objects;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "`user`")
+@Entity
+@Table(name = "`user`")
 public class User {
 
   @Id
@@ -29,6 +30,7 @@ public class User {
   private String phone;
   private String document;
   private String address;
+  private Integer idCredential;
 
   @Override
   public boolean equals(Object o) {

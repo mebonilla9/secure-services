@@ -1,6 +1,7 @@
-package dev.manuel.authority;
+package dev.manuel.clients.util;
 
-import dev.manuel.clients.SecureAppException;
+import dev.manuel.clients.exception.SecureAppException;
+import dev.manuel.clients.lasting.EMessage;
 
 import java.util.regex.Pattern;
 
@@ -11,7 +12,7 @@ public final class EmailValidator{
 
   public static void checkEmail(String email) throws SecureAppException {
     if (!Pattern.compile(regex).matcher(email).matches()){
-      throw new SecureAppException();
+      throw new SecureAppException(EMessage.ERROR_INVALID_EMAIL);
     }
   }
 

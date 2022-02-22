@@ -1,15 +1,13 @@
-package dev.manuel.authority;
+package dev.manuel.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients(basePackages = "dev.manuel.clients")
-public class AuthorityApplication {
+public class ApiGatewayApplication {
   public static void main(String... args) {
-    SpringApplication.run(AuthorityApplication.class, args);
+    SpringApplication.run(ApiGatewayApplication.class, args);
   }
 }
