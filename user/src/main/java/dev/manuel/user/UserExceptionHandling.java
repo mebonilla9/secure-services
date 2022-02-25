@@ -18,7 +18,7 @@ public class UserExceptionHandling extends ResponseEntityExceptionHandler {
   @ExceptionHandler(SecureAppException.class)
   public ResponseEntity<Object> handleSecureException(SecureAppException exception, WebRequest webRequest) {
     ExceptionResponse response = ExceptionResponse.builder()
-      .dateTime(LocalDateTime.now())
+      .code(exception.getCode())
       .message(exception.getMessage())
       .build();
     return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);

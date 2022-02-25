@@ -12,6 +12,6 @@ import java.time.LocalDateTime;
 public class ExceptionResponse {
 
   private String message;
-  private LocalDateTime dateTime;
+  private Integer code;
 
 }
