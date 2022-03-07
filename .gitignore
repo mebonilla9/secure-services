@@ -288,4 +288,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Target folder of the modules
+**/target/
+
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij+all,maven,windows,macos,linux,netbeans,eclipse
