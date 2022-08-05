@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public record UserController(UserService userService) {
 
   @PostMapping
-  public ResponseEntity registerUser(@RequestBody UserRegistrationRequest userRegistrationRequest) throws SecureAppException {
+  public ResponseEntity<?> registerUser(@RequestBody UserRegistrationRequest userRegistrationRequest) throws SecureAppException {
     log.info("New user registration {}", userRegistrationRequest);
     userService.registerUser(userRegistrationRequest);
     return new ResponseEntity<>(HttpStatus.OK);

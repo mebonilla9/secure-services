@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class CredentialExceptionHandling extends ResponseEntityExceptionHandler {
 
   @ExceptionHandler(SecureAppException.class)
-  public ResponseEntity<Object> handleSecureException(SecureAppException exception, WebRequest webRequest) {
+  public ResponseEntity<?> handleSecureException(SecureAppException exception, WebRequest webRequest) {
     ExceptionResponse response = ExceptionResponse.builder()
       .code(exception.getCode())
       .message(exception.getMessage())

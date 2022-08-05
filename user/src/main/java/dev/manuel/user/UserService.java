@@ -23,18 +23,12 @@ public record UserService(
       .phone(request.phone())
       .build();
     // TODO Check if document not taken
-    Optional<User> byDocument = userRepository.findByDocument(user.getDocument());
-    if (byDocument.isPresent()){
-      throw new SecureAppException(EMessage.ERROR_USER_REGISTERED);
-    }
+    User byDocument = userRepository.findByDocument(user.getDocument()).orElseThrow(() -> new SecureAppException(EMessage.ERROR_USER_REGISTERED));
     // TODO send request authority service
     ResponseEntity<Integer> responseEntity = credentialClient.registerCredential(request.credential());
     user.setIdCredential(responseEntity.getBody());
     // TODO store user in db
     userRepository.save(user);
-    // TODO Send credential request
   }
-
-  //public User
 
 }

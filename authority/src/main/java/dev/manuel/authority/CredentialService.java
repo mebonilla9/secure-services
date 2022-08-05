@@ -21,12 +21,9 @@ public record CredentialService(CredentialRepository credentialRepository) {
     // TODO Check if email valid
     EmailValidator.checkEmail(credential.getEmail());
     // TODO Check if email not taken
-    Optional<Credential> existentCredentialOptional = credentialRepository.findByEmailOrUserName(
+    Credential existentCredentialOptional = credentialRepository.findByEmailOrUserName(
       credential.getEmail(), credential.getUserName()
-    );
-    if (existentCredentialOptional.isPresent()){
-      throw new SecureAppException(EMessage.ERROR_USER_REGISTERED);
-    }
+    ).orElseThrow(() -> new SecureAppException(EMessage.ERROR_USER_REGISTERED));
     // TODO register credential into db
     credentialRepository.save(credential);
     return credential.getId();
